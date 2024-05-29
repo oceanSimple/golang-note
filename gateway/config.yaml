@@ -1,0 +1,20 @@
+jwt-secret: "default-secret"
+jwt-expiration: 3600
+
+upstream:
+  - name: "service1"
+    url: "http://localhost:8081"
+  - name: "service2"
+    url: "http://localhost:8082"
+  - name: "service3"
+    url: "http://localhost:8083"
+
+route:
+  - path: "/service1"
+    upstream: [ "service1", "service2" ]
+    jwt: true
+  - path: "/service2"
+    upstream: [ "service2" ]
+    jwt: true
+  - path: "/service3"
+    upstream: [ "service3" ]
